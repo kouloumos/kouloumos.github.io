@@ -1,0 +1,14 @@
+{
+  "list": [
+    {
+      "name": "Who Funds Bitcoin Development",
+      "url": "https://whofundsbitcoin.com/",
+      "desc": "an exploration tool for the Bitcoin open-source ecosystem."
+    },
+    {
+      "name": "Bitcoin Spaces",
+      "url": "https://joinbitcoin.space/",
+      "desc": "discover twitter spaces about Bitcoin"
+    }
+  ]
+}
