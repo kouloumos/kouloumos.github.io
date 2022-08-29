@@ -1,0 +1,44 @@
+baseURL = "https://www.kouloumos.com/"
+languageCode = 'en-us'
+title = 'up to the bitcoin hill'
+summaryLength = 2
+theme = "cactus"
+
+[[menu.main]]
+name = "home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "words"
+url = "/posts"
+weight = 2
+
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    startLevel = 1
+
+           
+[params]
+
+  colortheme = "dark" # dark, light, white, or classic
+  mainSectionTitle = "Words"
+	logo = "images/path.png"
+	description = "Low time preference dev pushing to work on the foundations of the new monetary system."
+  showProjectsList = true
+  projectsUrl = "https://github.com/kouloumos" # title link for projects list
+
+	dateFormat = "January 2, 2006" # default
+	# Post page settings
+  show_updated = true # default
+  showReadTime = true # default
+
+[[params.social]]
+  name = "github"
+  link = "https://github.com/kouloumos"
+
+[[params.social]]
+  name = "twitter"
+  link = "https://github.com/kouloumos"
