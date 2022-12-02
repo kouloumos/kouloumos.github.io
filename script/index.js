@@ -3258,11 +3258,11 @@
           }
           var isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*\:/i;
           var didWarn = false;
-          function sanitizeURL(url) {
+          function sanitizeURL(url2) {
             {
-              if (!didWarn && isJavaScriptProtocol.test(url)) {
+              if (!didWarn && isJavaScriptProtocol.test(url2)) {
                 didWarn = true;
-                error("A future version of React will block javascript: URLs as a security precaution. Use event handlers instead if you can. If you need to generate unsafe HTML try using dangerouslySetInnerHTML instead. React was passed %s.", JSON.stringify(url));
+                error("A future version of React will block javascript: URLs as a security precaution. Use event handlers instead if you can. If you need to generate unsafe HTML try using dangerouslySetInnerHTML instead. React was passed %s.", JSON.stringify(url2));
               }
             }
           }
@@ -49414,6 +49414,7 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   }), era: I$({ matchPatterns: { narrow: /^(b|a)/i, abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i, wide: /^(before christ|before common era|anno domini|common era)/i }, defaultMatchWidth: "wide", parsePatterns: { any: [/^b/i, /^(a|c)/i] }, defaultParseWidth: "any" }), quarter: I$({ matchPatterns: { narrow: /^[1234]/i, abbreviated: /^q[1234]/i, wide: /^[1234](th|st|nd|rd)? quarter/i }, defaultMatchWidth: "wide", parsePatterns: { any: [/1/i, /2/i, /3/i, /4/i] }, defaultParseWidth: "any", valueCallback: function(e27) {
     return e27 + 1;
   } }), month: I$({ matchPatterns: { narrow: /^[jfmasond]/i, abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i, wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i }, defaultMatchWidth: "wide", parsePatterns: { narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i], any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i] }, defaultParseWidth: "any" }), day: I$({ matchPatterns: { narrow: /^[smtwf]/i, short: /^(su|mo|tu|we|th|fr|sa)/i, abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i, wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i }, defaultMatchWidth: "wide", parsePatterns: { narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i], any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i] }, defaultParseWidth: "any" }), dayPeriod: I$({ matchPatterns: { narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i, any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i }, defaultMatchWidth: "any", parsePatterns: { any: { am: /^a/i, pm: /^p/i, midnight: /^mi/i, noon: /^no/i, morning: /morning/i, afternoon: /afternoon/i, evening: /evening/i, night: /night/i } }, defaultParseWidth: "any" }) };
+  var YY = ({ color: e27 = Nz.Gray, textAlignment: r2 = Bz, truncate: n2 = false, height: o2 = "", marginTop: i2 = "mt-0", children: a2 }) => import_react.default.createElement("p", { className: oF("text-elem tremor-base", uF(n2), n2 ? "tr-whitespace-nowrap" : "tr-shrink-0", o2 ? hF(o2) : o2, o2 ? "tr-overflow-y-auto" : "", pF(i2), cF(r2), aF(iU(e27).text).textColor, QF, tU) }, a2);
   var GY = ({ color: e27 = Nz.Gray, truncate: r2 = false, marginTop: n2 = "mt-0", children: o2 }) => import_react.default.createElement("p", { className: oF("text-elem tremor-base", r2 ? "tr-whitespace-nowrap" : "tr-shrink-0", uF(r2), pF(n2), aF(iU(e27).darkText).textColor, ZF, rU) }, o2);
   var ZY = { [Az.Increase]: { bgColor: aF(nF[Nz.Emerald].background).bgColor }, [Az.ModerateIncrease]: { bgColor: aF(nF[Nz.Emerald].background).bgColor }, [Az.Decrease]: { bgColor: aF(nF[Nz.Rose].background).bgColor }, [Az.ModerateDecrease]: { bgColor: aF(nF[Nz.Rose].background).bgColor }, [Az.Unchanged]: { bgColor: aF(nF[Nz.Orange].background).bgColor } };
 
@@ -49459,10 +49460,27 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   var valueFormatter = (number) => `${number} hours`;
   var App = () => {
     const [selectedView, setSelectedView] = React.useState(1);
+    const [recordsFetched, setRecordsFetched] = React.useState(false);
+    const [records, setRecords] = React.useState({});
     React.useEffect(() => {
-      console.log(projects);
+      const ttest = () => {
+        url = "http://whofundsbitcoin.com/records.json";
+        fetch(url).then((response) => {
+          if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+          }
+          return response.json();
+        }).then((json) => {
+          console.log(json);
+          setRecords(json);
+          setRecordsFetched(true);
+        }).catch(function() {
+          this.dataError = true;
+        });
+      };
+      ttest();
     }, []);
-    return /* @__PURE__ */ React.createElement(PH, null, /* @__PURE__ */ React.createElement(GY, null, "Working Hours"), /* @__PURE__ */ React.createElement(QH, {
+    return /* @__PURE__ */ React.createElement(PH, null, /* @__PURE__ */ React.createElement(GY, null, "Working Hours"), recordsFetched && /* @__PURE__ */ React.createElement(YY, null, "Lorem ipsum dolor sit amet, consetetur sadipscing elitr", " ", records && records["2021-10-15"][0]["folder"], "."), /* @__PURE__ */ React.createElement(QH, {
       defaultValue: 1,
       handleSelect: (value) => setSelectedView(value),
       marginTop: "mt-6"
