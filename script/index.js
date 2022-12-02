@@ -49464,7 +49464,7 @@ For more info, visit https://fb.me/react-mock-scheduler`);
     const [records, setRecords] = React.useState({});
     React.useEffect(() => {
       const ttest = () => {
-        url = "http://whofundsbitcoin.com/records.json";
+        url = "https://whofundsbitcoin.com/records.json";
         fetch(url).then((response) => {
           if (!response.ok) {
             throw new Error("HTTP error " + response.status);
