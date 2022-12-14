@@ -57,7 +57,7 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
-    {{ $mainPosts := (sort ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Date" "desc") }}
+    {{ $mainPosts := (sort (where ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Params.date" "!=" nil) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
     <ul class="post-list">
       {{ range (.Paginate $mainPosts).Pages }}
@@ -85,6 +85,25 @@
     </ul>
     {{ end }}
   </section>
+
+  {{ $showUpcomingPost := false }}
+  {{ if (isset .Site.Params "showupcomingpost") }}
+    {{ $showUpcomingPost = .Site.Params.showUpcomingPost }}
+  {{ end }}
+  {{ $upcomingPosts := where site.RegularPages "Params.date" "==" nil }} <!-- upcoming posts have no date  -->
+  {{ $showUpcomingPost := len $upcomingPosts }}
+  {{ if $showUpcomingPost }}
+  <section id="post-list">
+    <span class="h1">Upcoming {{ .Site.Params.mainSectionTitle | default "Writings" }}</span>
+    <ul class="post-list">
+        {{ range $upcomingPosts }}
+        <li class="post-item">
+          <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
+        </li>
+        {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 
   {{ $showProjectsList := false }}
   {{ if (isset .Site.Params "showprojectslist") }}

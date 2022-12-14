@@ -37,6 +37,8 @@ weight = 3
   showProjectsList = true
   projectsUrl = "https://github.com/kouloumos" # title link for projects list
 
+  showUpcomingPost = true
+
 	dateFormat = "January 2, 2006" # default
 	# Post page settings
   show_updated = true # default

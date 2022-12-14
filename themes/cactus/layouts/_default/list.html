@@ -11,12 +11,18 @@
     {{ $pageYear := (.Date.Format "2006") }}
     {{ if (ne $pageYear ($.Scratch.Get "year")) }}
     {{ $.Scratch.Set "year" $pageYear }}
-    <h2>{{ $pageYear }}</h2>
+      {{ if (eq $pageYear "0001") }} <!-- if no date is given, year translates to 0001  -->
+        <h2>Upcoming {{ .Site.Params.mainSectionTitle | default "Writings" }}</h2>
+      {{ else }}
+        <h2>{{ $pageYear }}</h2>
+      {{ end }}
     {{ end }}
     <li class="post-item">
+      {{ if (ne $pageYear "0001") }}
       <div class="meta">
         <time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</time>
       </div>
+      {{ end }}
       <span>    
         <a class="" href="{{ .Permalink }}">{{ if .Title }} {{ .Title }} {{ else }} Untitled {{ end }}</a>
       </span>
