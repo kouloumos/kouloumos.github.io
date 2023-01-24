@@ -57,7 +57,7 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
-    {{ $mainPosts := (sort (where ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Params.date" "!=" nil) "Date" "desc") }}
+    {{ $mainPosts := (sort (where ( where site.RegularPages "Type" "in" site.Params.mainSection ) "Params.date" "!=" nil) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
     <ul class="post-list">
       {{ range (.Paginate $mainPosts).Pages }}
@@ -90,7 +90,7 @@
   {{ if (isset .Site.Params "showupcomingpost") }}
     {{ $showUpcomingPost = .Site.Params.showUpcomingPost }}
   {{ end }}
-  {{ $upcomingPosts := where site.RegularPages "Params.date" "==" nil }} <!-- upcoming posts have no date  -->
+  {{ $upcomingPosts := (sort (where ( where site.RegularPages "Type" "in" site.Params.mainSection ) "Params.date" "==" nil) "Date" "desc") }} <!-- upcoming posts have no date  -->
   {{ $showUpcomingPost := len $upcomingPosts }}
   {{ if $showUpcomingPost }}
   <section id="post-list">

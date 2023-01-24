@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = 'up to the bitcoin hill'
 summaryLength = 2
 theme = "cactus"
+[permalinks]
+  words = ":filename"
 
 [[menu.main]]
 name = "home"
@@ -11,7 +13,7 @@ weight = 1
 
 [[menu.main]]
 name = "words"
-url = "/posts"
+url = "/words"
 weight = 2
 
 [[menu.main]]
@@ -31,6 +33,7 @@ weight = 3
 [params]
 
   colortheme = "dark" # dark, light, white, or classic
+  mainSection = "words"
   mainSectionTitle = "Words"
 	logo = "images/path.png"
 	description = "Low time preference dev pushing to work on the foundations of the new monetary system."

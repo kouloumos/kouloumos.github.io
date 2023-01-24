@@ -1,8 +1,9 @@
 ---
 title: Ascent
 date: 2021-11-24
-description: "test"
+description: "The beginning of my journey up the Bitcoin Hill, my path to becoming a Bitcoin Core contributor"
 category: notes
+images: ["/images/orange_pill.png"]
 ---
 
 I was born into a fiat money system. It was Bitcoin that challenged my reality and made me think of our relationship with money and the shaky future of the current monetary system. Most people will live their entire lives unaware of what is hidden in plain sight, ignoring the surrounding water[^1] just because they were born into it. Yet given the choice, most will choose the blue pill.
@@ -10,7 +11,7 @@ I was born into a fiat money system. It was Bitcoin that challenged my reality a
 > > “You take the blue pill — the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill — you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember, all I am offering is the truth — nothing more.”  
 — Morpheus, The Matrix
 
-![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fkouloumos%2FCYdXroM0aT.png?alt=media&token=dc0e09bb-ecb8-4e87-8e9e-5d712d6f3f2c)
+![](/images/orange_pill.png)
 
 I took the orange pill and I have never been the same since.
 
