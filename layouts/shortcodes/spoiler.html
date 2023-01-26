@@ -1,0 +1,9 @@
+{{ with resources.Get "script/spoiler.jsx" }}
+{{ $options := dict "defines" (dict "process.env.BaseURL" (printf `"%s"` $.Site.BaseURL)) }}
+{{ $script := . | js.Build $options }}
+<script src="{{ $script.RelPermalink }}" defer></script>
+{{ end }}
+
+<body>
+    <div data-text={{ .Get "text" | default " " }} data-twitter={{ .Get "twitter" | default " " }} data-dm={{ .Get "dm" | default " " }} id="react-spoiler"></div>
+</body>
