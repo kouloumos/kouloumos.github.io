@@ -20,6 +20,9 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - name: NPM install
+        run: npm install
+
       - name: Build
         run: hugo --minify
 

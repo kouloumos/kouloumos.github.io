@@ -32,7 +32,11 @@
               (Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format $dataFormat }}</time>)
             {{ end }}
           {{ else }}
-            <span>Coming soon</span>
+            {{ if isset .Params "wip" }}
+              <span>On the horizon...</span>
+            {{ else }}
+              <span>Coming soon...</span>
+            {{ end }}
           {{ end }}
         </div>
         {{ $showReadTime := .Site.Params.showReadTime | default false }}

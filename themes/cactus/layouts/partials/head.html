@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}"> 
 
   <!-- Custom CSS -->
+  {{ $css := resources.Get "css/tremor.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $css.Permalink }}">
   {{ range .Site.Params.css }} <link rel="stylesheet" href="{{ . | absURL }}"> {{ end }}
   {{ `
     <!--[if lt IE 9]>

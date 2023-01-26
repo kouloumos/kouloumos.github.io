@@ -54,3 +54,15 @@ weight = 3
 [[params.social]]
   name = "twitter"
   link = "https://twitter.com/kouloumos"
+
+[module]
+# to import the css directly from the upstream dependency
+[[module.mounts]]
+  source = "./node_modules/@tremor/react/dist/esm/"
+  target = "assets/css"
+# When you add a mount, the default mount for the concerned target root is ignored
+# so we need to explicitly add it. 
+# see https://gohugo.io/hugo-modules/configuration/#module-config-mounts
+[[module.mounts]]
+  source = 'assets'
+  target = 'assets'
