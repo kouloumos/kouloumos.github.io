@@ -1,0 +1,9 @@
+{{ with resources.Get "script/monthly_charts.jsx" }}
+{{ $options := dict "defines" (dict "process.env.BaseURL" (printf `"%s"` $.Site.BaseURL)) }}
+{{ $script := . | js.Build $options }}
+<script src="{{ $script.RelPermalink }}" defer></script>
+{{ end }}
+
+<body>
+    <div id="react-monthly-charts"></div>
+</body>
