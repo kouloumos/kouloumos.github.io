@@ -82,7 +82,7 @@ That mid-May call was the push that I needed to get back on track. A push and a 
 
 # Through the foothills
 
-There's a good reason why **"Start with reviewing"** is the go-to advice for anyone looking to contribute.
+There's a good reason why [**"Reviewing"**](https://jonatack.github.io/articles/on-reviewing-and-helping-those-who-do-it) is the go-to advice for anyone looking to contribute.
 
 Bitcoin Core is a multi-dimensional project, [which means a wide range of opportunities for contributors to explore]({{< ref "finding-a-fit" >}}). But taking those first steps and navigating through the vast network of loosely defined paths can be overwhelming. That's where reviewing comes in - just like a climber exploring the foothills, **reviewing allows you to get a sense of the different paths ahead of you and find the ones that align with your experiences, skills, and passions**.
 
