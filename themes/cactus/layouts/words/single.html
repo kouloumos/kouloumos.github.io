@@ -9,6 +9,9 @@
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
       <h1 class="posttitle" itemprop="name headline">
+        {{ if isset .Params "feedback" }}
+          <span>[WIP]</span>
+        {{ end }}
         {{ .Title }}
       </h1>
       <div class="meta">
@@ -83,6 +86,13 @@
     </div>
     {{ end }}
     <div class="content" itemprop="articleBody">
+      {{ if isset .Params "feedback" }}
+        <div class="search-input">
+          <span>Article in progress, </span>
+          <a target="_blank" rel="noopener" href="{{ .Params.feedback }}">feedback appreciated(github PR)</a>
+        </div>
+        <hr/>
+      {{ end }}
       {{ .Content}}
     </div>
   </article>
